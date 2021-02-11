@@ -1,5 +1,5 @@
-<?php 
+<?php
 
-return function ($res,$req,$next) {
-    echo "asd";
+return function ($res, $req, $next) {
+    echo 'Middleware 2';
 };

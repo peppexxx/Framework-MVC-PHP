@@ -7,7 +7,7 @@ class Request {
         // 'name' => 'Giuseppe',
         // 'email' => 'email...'
     ];
-    protected $uri;
+    public $uri;
     protected $method;
     protected $agent;
     protected $path;
@@ -17,7 +17,7 @@ class Request {
     public function __construct()
     {
         $this->body = $_REQUEST;
-        $this->uri = $_SERVER['REQUEST_URI'];  
+        $this->uri = trim($_SERVER['REQUEST_URI'],'/');  
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->agent = $_SERVER['HTTP_USER_AGENT'];
         $this->ip = $this->setIP();

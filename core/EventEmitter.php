@@ -34,7 +34,7 @@ class EventEmitter {
         }
     }
 
-    public static function getAllEvents() {
+    public static function get() {
         return self::$events;
     }
 }

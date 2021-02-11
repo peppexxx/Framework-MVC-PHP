@@ -3,9 +3,15 @@
 use core\Router;
 
 # middlewares
-$isAdmin = require './app/middlewares/isAdmin.php';
+$isAuth = require '../app/middlewares/isAuth.php';
 
 
-Router::get('/', function() {
-    echo "ciao";
-},[$isAdmin]);
+
+
+Router::get('/dashboard', function() {
+    echo __FUNCTION__;
+},[$isAuth]);
+
+Router::get('/posts/{id}', function() {
+    echo __FUNCTION__;
+},[$isAuth]);
