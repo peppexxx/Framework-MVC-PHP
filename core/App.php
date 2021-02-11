@@ -29,14 +29,12 @@ class App extends Router {
         parent::$routes = $this->numRouter === 0 ? [] : array_slice(parent::$routes, 0, $this->numRouter);
 
         if(!is_callable($action)){ 
-                                        // 0      // ['path','action','middleware']
+                                        
             foreach ($cloneRoutes as $key => $value) {
                 $cloneRoutes[$key]['path'] = $action . $cloneRoutes[$key]['path'];
 
-                # conteggio route
                 $this->numRouter++;
 
-                # matching Route basic + Regex
                 $result = $this->match($cloneRoutes[$key]);
                 
                 if($result) {
@@ -45,7 +43,6 @@ class App extends Router {
                 }
             }
 
-            # salva le nuove rutte destrutturando clone e quelle attuali
             parent::$routes = [
                 ...parent::$routes,
                 ...$cloneRoutes
@@ -53,7 +50,6 @@ class App extends Router {
 
         }
 
-        # add middlewars in routes
         else $this->middleware->set($action);
 
     }
